@@ -78,7 +78,7 @@ for i, v in enumerate(performance):
     ax.text(i-.25, 
               v/performance[i]+100, 
               performance[i], 
-              fontsize=18)
+              fontsize=14)
 plt.ylabel('Amount')
 plt.xlabel('Metrics')
 plt.title('Tweet Metric Data')
