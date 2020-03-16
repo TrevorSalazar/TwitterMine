@@ -16,13 +16,16 @@ import warnings
 from config import *
 warnings.filterwarnings("ignore")
 
+#Set font size
 sns.set(font_scale=1.5)
 sns.set_style("whitegrid")
 
+#Get authorization
 auth = tw.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tw.API(auth, wait_on_rate_limit=True)
 
+#Removes URL
 def remove_url(txt):
     """Replace URLs found in a text string with nothing 
     (i.e. it will remove the URL from the string).
@@ -69,5 +72,6 @@ sentiment_df.hist(bins=[-1, -0.75, -0.5, -0.25, 0.25, 0.5, 0.75, 1],
              ax=ax,
              color="purple")
 
+#Display plot
 plt.title("Sentiments from Tweets on Coronavirus")
 plt.show()

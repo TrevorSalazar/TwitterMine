@@ -34,6 +34,7 @@ for status in tweepy.Cursor(api.user_timeline, screen_name=username, tweet_mode=
     tweets_today += 1
 
 
+#Prints statistics
 print("Statistics!")
 print("Number of tweets retrieved: ")
 print(i)
@@ -45,6 +46,8 @@ print("Average tweets on days that user DID tweet per day: ")
 print(sum(daily_tweets) / len(daily_tweets))
 print("Average tweets per day overall: ")
 print(sum(daily_tweets) / ((first_day - last_day).days + 2))
+
+#Initializes pie chart, then a bar chart and displays them in sequence
 labels = 'Regular tweets', 'Retweets'
 sizes = [i - retweets, retweets]
 colors = ['gold', 'lightcoral']

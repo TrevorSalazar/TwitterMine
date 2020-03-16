@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from config import *
 
+#Set up auth, auth tokens
 request_token_url = "https://api.twitter.com/oauth/request_token"
 oauth = OAuth1Session(consumer_key, client_secret=consumer_secret)
 fetch_response = oauth.fetch_request_token(request_token_url)
@@ -67,6 +68,7 @@ print(jdata["data"][0]["author_id"])
 print("Created At: ")
 print(jdata["data"][0]["created_at"])
 
+#Build plot, subplots
 fig, ax = plt.subplots()
 statistics = ('Likes', 'Retweets', 'Replies', 'Quotes')
 y_pos = np.arange(len(statistics))
@@ -74,11 +76,15 @@ performance = (jdata["data"][0]["stats"]["like_count"], jdata["data"][0]["stats"
     jdata["data"][0]["stats"]["reply_count"], jdata["data"][0]["stats"]["quote_count"])
 plt.bar(y_pos, performance, align='center', alpha=0.5)
 plt.xticks(y_pos, statistics)
+
+#Enumerate for subplots
 for i, v in enumerate(performance):
     ax.text(i-.25, 
               v/performance[i]+100, 
               performance[i], 
               fontsize=14)
+
+#Display Plot
 plt.ylabel('Amount')
 plt.xlabel('Metrics')
 plt.title('Tweet Metric Data')

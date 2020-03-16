@@ -38,6 +38,7 @@ oauth = OAuth1Session(
     resource_owner_secret=access_token_secret,
 )
 
+#Receive tweet ID input
 tweet_id = input(
     "What Tweet ID(s) do you want to look up? (You can add up to 50, comma separated, Tweet IDs)\n")
 params = {"ids": tweet_id}
